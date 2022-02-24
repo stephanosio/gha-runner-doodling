@@ -1,0 +1,30 @@
+name: Noodling
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  noodle:
+    name: Noodle
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: env stuff
+      run: |
+        set -x
+        echo "$GITHUB_TOKEN"
+        echo "${{ env.GITHUB_TOKEN }}"
+        echo "${{ secrets.GITHUB_TOKEN }}"
+
+    - name: Check out
+      uses: actions/checkout@v2
+
+    - name: other stuff
+      run: |
+        set -x
+        whoami
+        pwd
+        ps -A
+        ls -laR /home/runner
+        cat .git/config
